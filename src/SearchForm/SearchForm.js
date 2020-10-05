@@ -8,10 +8,10 @@ export default class SearchForm extends Component{
     render() {
     return (
         <div>
-            <label for="search-bar">Search</label>
+            <label htmlFor="search-bar">Search</label>
             <input value={this.state.searchValue} onChange={(e)=> this.setState({searchValue: e.currentTarget.value})}name="search-bar" id="search-bar"></input>
-            <button onClick={(e) => this.props.handleSubmitButton(this.state.searchValue)} type="submit" class="search-button">Search</button>
-            <label for="print-type">Print Type</label>
+            <button onClick={(e) => this.props.handleSubmitButton(this.state.searchValue)} type="submit" className="search-button">Search</button>
+            <label htmlFor="print-type">Print Type</label>
             <selector name="print-type" id="print-type">
                 <option>All</option>
                 <option>BOOKS</option>

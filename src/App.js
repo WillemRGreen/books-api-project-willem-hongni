@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     bookList:[],
     error:null
-  }
+}
 
   handleSubmitButton = (searchValue) => {
     this.handleGetBooks(searchValue)
@@ -38,31 +38,31 @@ class App extends Component {
     });
   }
 
-  handleBooksList = (props) => {
-    const bookList = this.props.bookList.map((bookItem) => {
-      this.state
-    })
-  }
+  //componentDidMount() {
+    
+    
+    
+//}
 
 
   render(){
     console.log(this.state.bookList)
     return(
-      <div class="main">
+      <div className="main">
         <Header />
 
-        <fieldset class="search-form">
+        <fieldset className="search-form">
           <SearchForm handleSubmitButton={this.handleSubmitButton}/>
         </fieldset>
-          {this.state.bookList.map((list) => {
-            <ResultsList 
-              title={list.title}
-              author={list.author}
-              price={list.price}
-              description={list.description}
-              thumbnail={list.thumbnail} />
-          })}
-        
+        {this.state.bookList.map((list) => (
+          <ResultsList 
+          title={list.title}
+          authors={list.authors}
+          description={list.description}
+          price={list.price}
+          thumbnail={list.thumbnail}/>
+        ))
+        }
       </div>
     )
   }

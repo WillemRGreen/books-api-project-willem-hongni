@@ -3,7 +3,7 @@ import './Header.css'
 
 export default function Header() {
     return(
-        <div class="header">
+        <div className="header">
             <h1>Google Book Search</h1>
         </div>
     )
