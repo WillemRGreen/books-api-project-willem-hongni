@@ -12,11 +12,11 @@ export default class SearchForm extends Component{
             <input value={this.state.searchValue} onChange={(e)=> this.setState({searchValue: e.currentTarget.value})}name="search-bar" id="search-bar"></input>
             <button onClick={(e) => this.props.handleSubmitButton(this.state.searchValue)} type="submit" className="search-button">Search</button>
             <label htmlFor="print-type">Print Type</label>
-            <selector name="print-type" id="print-type">
+            <select name="print-type" id="print-type">
                 <option>All</option>
                 <option>BOOKS</option>
                 <option>MAGAZINE</option>
-            </selector>
+            </select>
         </div> 
     )}
 };

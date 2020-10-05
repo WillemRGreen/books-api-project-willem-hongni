@@ -61,7 +61,7 @@ class App extends Component {
           authors={list.authors}
           description={list.description}
           price={list.price}
-          //thumbnail={list.thumbnail}
+          thumbnail={list.thumbnail}
           />
         ))
         }
