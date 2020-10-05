@@ -11,7 +11,6 @@ class App extends Component {
 }
 
   handleSubmitButton = (searchValue) => {
-    console.log(searchValue)
     this.handleGetBooks(searchValue)
   }
 
@@ -39,7 +38,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //this.handleGetBooks('')
+    
     
     
 }
