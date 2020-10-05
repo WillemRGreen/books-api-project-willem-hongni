@@ -11,14 +11,14 @@ class App extends Component {
     error:null
 }
 
-  handleSubmitButton = (searchValue) => {
-    this.handleGetBooks(searchValue)
+  handleSubmitButton = (searchValue, filterValue) => {
+    this.handleGetBooks(searchValue, filterValue)
   }
 
-  handleGetBooks = (searchValue) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=`
+  handleGetBooks = (searchValue, filterValue) => {
+    const url = `https://www.googleapis.com/books/v1/volumes?`
     
-    fetch(`${url}${searchValue}`)
+    fetch(`${url}filter=${filterValue}&q=${searchValue}&key=${apiKey}`)
     .then(res => {
       if(!res.ok) {
         throw new Error('Something went wrong, please try again later')
@@ -28,7 +28,7 @@ class App extends Component {
     .then(res => res.json())
     .then(data => {
       let newList = data.items.map(item =>{
-        return {title:item.volumeInfo.title, authors:item.volumeInfo.authors, description:item.volumeInfo.description, price:item.saleInfo.retailPrice? item.saleInfo.retailPrice.amount: '', thumbnail:item.volumeInfo.imageLinks? item.volumeInfo.imageLinks.smallThumbnail: ''}
+        return {title:item.volumeInfo.title, authors:item.volumeInfo.authors, description:item.volumeInfo.description, price:item.saleInfo.retailPrice? item.saleInfo.retailPrice.amount: '', thumbnail:item.volumeInfo.imageLinks? item.volumeInfo.imageLinks.smallThumbnail: '', id:item.id}
       })
       this.setState({bookList:newList})
     })
@@ -37,12 +37,6 @@ class App extends Component {
       console.log(err)
     });
   }
-
-  //componentDidMount() {
-    
-    
-    
-//}
 
 
   render(){
@@ -54,15 +48,17 @@ class App extends Component {
         <fieldset className="search-form">
           <SearchForm handleSubmitButton={this.handleSubmitButton}/>
         </fieldset>
+        
         {this.state.bookList.map((list) => (
+          <div id ={list.id}>
           <ResultsList 
-          key={list.id}
           title={list.title}
           authors={list.authors}
           description={list.description}
           price={list.price}
           thumbnail={list.thumbnail}
           />
+          </div>
         ))
         }
       </div>
