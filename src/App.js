@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header/Header';
 import SearchForm from './SearchForm/SearchForm'
+import ResultsList from './ResultsList/ResultsList'
 
 const apiKey = 'AIzaSyBQfBOsRj9-0wFDUfUFqOgz5njOc_VjDw8';
 
@@ -8,7 +9,7 @@ class App extends Component {
   state = {
     bookList:[],
     error:null
-}
+  }
 
   handleSubmitButton = (searchValue) => {
     this.handleGetBooks(searchValue)
@@ -37,11 +38,11 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    
-    
-    
-}
+  handleBooksList = (props) => {
+    const bookList = this.props.bookList.map((bookItem) => {
+      this.state
+    })
+  }
 
 
   render(){
@@ -53,6 +54,15 @@ class App extends Component {
         <fieldset class="search-form">
           <SearchForm handleSubmitButton={this.handleSubmitButton}/>
         </fieldset>
+          {this.state.bookList.map((list) => {
+            <ResultsList 
+              title={list.title}
+              author={list.author}
+              price={list.price}
+              description={list.description}
+              thumbnail={list.thumbnail} />
+          })}
+        
       </div>
     )
   }
