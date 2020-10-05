@@ -56,11 +56,13 @@ class App extends Component {
         </fieldset>
         {this.state.bookList.map((list) => (
           <ResultsList 
+          key={list.id}
           title={list.title}
           authors={list.authors}
           description={list.description}
           price={list.price}
-          thumbnail={list.thumbnail}/>
+          //thumbnail={list.thumbnail}
+          />
         ))
         }
       </div>
